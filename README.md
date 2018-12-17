@@ -1,4 +1,4 @@
-# Google Cloud Infrastructure
+# Google Cloud Infrastructure (1 Day)
 
 ## Chap 01. Why GCP ？
 
@@ -175,3 +175,119 @@
   - Google Container Registry
     - Image 管理
     - 檔案控管
+- k8s node 會自動視部署 app 情況自動擴展
+  - 不夠會開一個新 node 來放置部署的 app
+
+## Chap 06. Application
+
+- PaaS
+- App Engine
+- 兩種環境
+  - Standard
+  - Flexible
+- Standard
+  - 限制 runtime 與言與版本
+  - 有被 Google Tuning，速度快
+- Flexible
+  - 基本上就是跑一個 Container
+  - 不受程式語言與版本限制
+- Cloud Endpoints
+  - API Gateway
+  - API v1 to v2 版本管理
+- Apigee Edge
+  - APIs 管理
+  - API 層級保護
+- cloud shell 是一個測試用環境
+  - dev_appserver 是測試 App Engine 工具
+- Google 號稱 App Engine 不會有流量爆量問題，Google 會幫你管好
+- 其實 App Engine 是 Google 最早期產品
+  - 太抽象 / 太前衛，一開始出沒有人會用
+  - 運維失業
+  - 所以被 AWS 超過，AWS 以運維為出發點
+  - PaaS to IaaS
+  - 有了 IaaS 後，大家才開始接受 PaaS：App Engine
+  - GCP 自己也承認這樣的錯誤
+
+## Chap 07. Developing Deploying and Monitoring
+
+- Cloud Source
+  - GCP 版本的 github
+- Cloud Functions
+  - 只要寫 Function
+  - 可整合 Google Cloud 服務
+    - 很多 trigger 供使用來觸發 Function
+  - 自動化通用工具
+  - Node, Python 支援
+- Deployment Manager
+  - Infra as code
+  - yaml script
+  - 描述你想要的狀態
+    - 沒有順序的相依性，會自動幫你釐清
+  - 版本管理
+  - 災害復原
+- Stackdriver
+  - Monitor
+  - Logging
+  - Debug (進階)
+  - Error Reporting (進階)
+  - Trace (進階)
+  - Profiler (Beta) (進階)
+  - 僅 CPU/Memory/Disk infra 的部分
+    - 若要針對業務邏輯要用 StackDriver Agent，寫程式在裡面
+  - 可儲存 Dashboard
+
+## Chap 08. Big Data and Machine Learning
+
+- No data, No machine learning
+  - TB 等級以上
+  - 需要強的 Infra 來支撐
+- Dataproc
+  - Hadoop
+  - 一群 Compute Emgine，裝好相關工具
+  - 沒使用會自動關閉，有需要再打開
+  - 最簡單的運維架構方法對應
+- Dataflow
+  - 類似 App Engine
+  - 可直接寫 pipeline 程式，不用管底層與工具 (ETL Job)
+  - Source -> Transforms -> Sink
+  - BigQuery -> Cloud Storage
+  - 可介接很多 GCP 服務
+- BigQuery
+  - 資料倉儲服務
+  - Support SQL syntax
+  - 平行 node 來處理，合理時間回應 (分鐘等級)，資料越多開的 node 越多
+  - 費用以踏過的資料尺寸來收費
+  - 有好 SQL 技巧會比較低費用
+- Pub/Sub
+  - Micro Services 另一種溝通方式：非同步溝通
+  - Message Queue 服務
+  - 不用即時回應
+  - 可承載超多 message
+  - 搶票系統運用 Message Queue 作保護
+  - IOT 運用，不間斷的服務
+- Datalab
+  - 資料分析科學家用
+  - Python 即時看到成果
+- Machine Learning
+  - Youtube
+  - demo
+    - Vision API > Quickly Drag and Drop
+    - Google Speech API
+  - Cloud ML
+- 資料倉儲？
+  - 容易把資料放進去
+  - 要修改則很難，有限制
+
+## Summary
+
+- compute:
+  - IaaS
+  - PaaS
+  - Serverless
+- load-balancing
+  - proxy
+    - IP 放到 header 上即可看到
+  - forward
+- interconnect
+- storage
+  - storage classes
