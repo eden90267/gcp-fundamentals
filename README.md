@@ -2,13 +2,13 @@
 
 ## Chap 01. Why GCP ？
 
-1. 網路
+- 網路
   - GCP：10ms
   - AWS：42ms
-2. 價格
+- 價格
   - CALCURATOR
   - 後進者所以一定要比較便宜
-3. Mulitple Open Source Service
+- Mulitple Open Source Service
   - 可移轉其他雲端服務
 
 ## Chap 02. Getting Started
